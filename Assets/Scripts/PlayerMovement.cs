@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     private Vector2 movement;
-
+    public Animator animator;
     
     private Rigidbody2D rb;
 
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
         movement = new Vector2(moveX, moveY).normalized; //Normalizing the movement Vector prevents faster moving speeds when going diagonal
 
+
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Flip Object depending on if mouse is left or right from object
@@ -35,7 +36,11 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
         }
 
-        //placeholder for animation calling ~2 lines
+        //Sets the positive or negative value for horizontal and vertical movement animation (from 1 to -1) as well as speed (greater or less than 0.01)
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+        
 
     }
 

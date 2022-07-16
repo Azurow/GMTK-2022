@@ -10,8 +10,7 @@ public class Weapon : MonoBehaviour
     private Animator animator;
 
     private bool isShooting;
-
-=======
+    
     void Start()
     {
         animator = GetComponent<Animator>();

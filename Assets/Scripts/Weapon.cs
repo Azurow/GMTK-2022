@@ -11,6 +11,11 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Vector2 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        firePoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();

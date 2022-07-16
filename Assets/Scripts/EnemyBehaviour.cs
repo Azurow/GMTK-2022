@@ -10,12 +10,13 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
 
     private GameObject player;
     private Rigidbody2D rb;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         Health = startHealth;
-
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
     }
@@ -29,10 +30,12 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
     public void Damage()
     {
         Health--;
-
-        if(Health <= 0)
+        
+        if (Health <= 0)
         {
-            Destroy(this.gameObject);
+            speed = 0;
+            animator.SetTrigger("Death");
+            Destroy(this.gameObject, 1.5f);
         }
     }
 }

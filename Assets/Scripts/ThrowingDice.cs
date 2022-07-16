@@ -9,6 +9,7 @@ public class ThrowingDice : MonoBehaviour
     public float explosionRadius;
     private Rigidbody2D rb;
     public GameObject explosionPrefab;
+    public GameObject dicePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class ThrowingDice : MonoBehaviour
     void Explode()
     {
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Instantiate(dicePrefab, transform.position, Quaternion.identity);
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
         foreach(Collider2D col in cols)
         {

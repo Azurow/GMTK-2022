@@ -136,7 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e72c819dccec5d42a42f47531343c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.014285937
-  explosionTime: 1
+  speed: 15
+  explosionTime: 0.5
   explosionRadius: 2
   explosionPrefab: {fileID: 8126603479170275947, guid: e92c4bedf9912924daf63760c9efe249, type: 3}
+  dicePrefab: {fileID: 4853132646318714463, guid: 3325a98775d892f489e8304df61788cb, type: 3}

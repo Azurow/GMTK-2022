@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ThrowingDice : MonoBehaviour
 {
-    public float speed;
+    public float maxSpeed;
+    float calculatedSpeed; //The speed after the calculating the distance of the mouse into it
     public float explosionTime = 2f;
     public float explosionRadius;
     private Rigidbody2D rb;
@@ -15,7 +16,14 @@ public class ThrowingDice : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * speed;
+
+        calculatedSpeed = Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if(calculatedSpeed > maxSpeed)
+        {
+            calculatedSpeed = maxSpeed;
+        }
+        rb.velocity = transform.right * calculatedSpeed;
+
         Invoke("Explode", explosionTime);
     }
 
@@ -35,15 +43,5 @@ public class ThrowingDice : MonoBehaviour
         }
 
         Destroy(this.gameObject);
-    }
-
-    public void AdjustThrowSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-    }
-
-    public void AdjustSlowDown(float newSpeed)
-    {
-        rb.drag = newSpeed;
     }
 }

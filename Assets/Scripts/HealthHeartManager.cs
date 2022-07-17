@@ -8,16 +8,34 @@ public class HealthHeartManager : MonoBehaviour
     public PlayerHealth playerHealth;
     List<HealthHeart> hearts = new List<HealthHeart>();
 
+    public static HealthHeartManager instance;
+
+    public void Start()
+    {
+        if(instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        instance = this;
+
+        DrawHearts();
+    }
 
     public void DrawHearts()
     {
         ClearHearts();
 
-        float meaHealthRemainder = playerHealth.maxHealth % 2;
-        int heartsToMake = (int)((playerHealth.maxHealth / 2) + int.MaxValue);
+        float maxHealthRemainder = playerHealth.maxHealth % 2;
+        int heartsToMake = (int)((playerHealth.maxHealth / 2) + maxHealthRemainder);
         for(int i = 0; i < heartsToMake; i++)
         {
             CreateEmptyHeart();
+        }
+
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            int heartStatusRemainder = (int)Mathf.Clamp(playerHealth.Health - (i*2), 0, 2);
+            hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
         }
 
     }

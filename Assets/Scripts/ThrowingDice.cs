@@ -46,7 +46,7 @@ public class ThrowingDice : MonoBehaviour
             IDamagable hit = col.GetComponent<IDamagable>();
             if(hit != null)
             {
-                hit.Damage(1);
+                hit.Damage(rollResult / 2);
                 Debug.Log("Damaged " + col.name);
             } 
         }

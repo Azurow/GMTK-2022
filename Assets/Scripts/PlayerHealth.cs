@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
@@ -28,11 +29,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
         Health -= damage;
         damageCooldownTimer = damageCoolDown;
+        HealthHeartManager.instance.DrawHearts(); // Refreshes the hearts
         Debug.Log("Hit Player");
         
         if (Health <= 0)
         {
-            Debug.Log("Lose");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

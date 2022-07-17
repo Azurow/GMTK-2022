@@ -47,14 +47,20 @@ public class Weapon : MonoBehaviour
 
         if(Input.GetButtonUp("Fire1") && isShooting)
         {
+            animator.SetBool("isAttack", true);
             GetComponent<LineRenderer>().enabled = false;
-            Shoot();
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         animator.SetTrigger("Attack");
+    }
+
+    public void StopAttack()
+    {
+        if(animator.GetBool("isAttack")) animator.SetBool("isAttack", false);
+
     }
 }

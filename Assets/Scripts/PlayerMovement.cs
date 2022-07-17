@@ -27,19 +27,17 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // Flip Object depending on if mouse is left or right from object
-        if(mousePos.x > transform.position.x)
-        {
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-        } else
-        {
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-        }
-
         //Sets the positive or negative value for horizontal and vertical movement animation (from 1 to -1) as well as speed (greater or less than 0.01)
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if(Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 ||
+            Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        {
+            animator.SetFloat("last_Horizontal", Input.GetAxisRaw("Horizontal"));
+            animator.SetFloat("last_Vertical", Input.GetAxisRaw("Vertical"));
+        }
         
 
     }

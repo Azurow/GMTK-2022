@@ -10,6 +10,10 @@ public class ThrowingDice : MonoBehaviour
     public float explosionRadius;
     private Rigidbody2D rb;
     public GameObject explosionPrefab;
+
+    public AudioSource audioSource;
+    public AudioClip[] rollingSounds;
+    public AudioClip[] resultSounds;
     
     public GameObject resultDisplay;
     public Sprite[] resultSprites;
@@ -18,6 +22,9 @@ public class ThrowingDice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource.clip = rollingSounds[Random.Range(0, rollingSounds.Length)];
+        audioSource.Play();
+
         rb = GetComponent<Rigidbody2D>();
         // Throwing speed depending on distance to mouse
         calculatedSpeed = Vector2.Distance(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -29,18 +36,39 @@ public class ThrowingDice : MonoBehaviour
 
         //Random system
         int[] weights = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6};
-        rollResult = weights[Random.RandomRange(0, weights.Length)];
+        rollResult = weights[Random.Range(0, weights.Length)];
         Invoke("Explode", explosionTime);
     }
 
     void Explode()
     {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        switch (rollResult)
+        {
+            case 1:
+                Debug.Log("1");
+                AudioManagerScript.instance.GetComponent<AudioSource>().clip = resultSounds[0];
+                break;
+            case 6:
+            Debug.Log("6");
+                AudioManagerScript.instance.GetComponent<AudioSource>().clip = resultSounds[2];
+                break;
+            default:
+            Debug.Log("else");
+                AudioManagerScript.instance.GetComponent<AudioSource>().clip = resultSounds[1];
+                break;
+        }
+
+        AudioManagerScript.instance.GetComponent<AudioSource>().Play();
+
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        explosion.GetComponent<ParticleSystem>().emission.SetBurst(0, new ParticleSystem.Burst(0f, (short)rollResult * 2));
+        explosion.GetComponent<ParticleSystem>().startSize = rollResult / 2;
+
         GameObject resultDisplayObject = Instantiate(resultDisplay, transform.position, Quaternion.identity);
         resultDisplayObject.GetComponent<SpriteRenderer>().sprite = resultSprites[rollResult - 1];
         Destroy(resultDisplayObject, 1.5f);
 
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, explosionRadius * (rollResult / 3));
         foreach(Collider2D col in cols)
         {
             IDamagable hit = col.GetComponent<IDamagable>();

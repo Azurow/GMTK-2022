@@ -9,6 +9,11 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     private Animator animator;
 
+
+    public AudioSource prepareSound;
+    public AudioSource throwSoundSource;
+    public AudioClip[] throwSounds;
+
     private bool isShooting;
     
     void Start()
@@ -56,11 +61,23 @@ public class Weapon : MonoBehaviour
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         animator.SetTrigger("Attack");
+        prepareSound.Play();
     }
 
     public void StopAttack()
     {
         if(animator.GetBool("isAttack")) animator.SetBool("isAttack", false);
 
+    }
+
+    public void PlaythrowSound()
+    {
+        throwSoundSource.clip = throwSounds[Random.Range(0, throwSounds.Length)];
+        throwSoundSource.Play();
+    }
+
+    public void PlayprepareSound()
+    {
+        prepareSound.Play();
     }
 }

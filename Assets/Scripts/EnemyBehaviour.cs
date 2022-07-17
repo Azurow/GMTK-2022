@@ -18,6 +18,9 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
     private Rigidbody2D rb;
     private Animator animator;
 
+    public AudioSource hitSound;
+    public AudioSource deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +56,10 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
             speed = 0;
             animator.SetTrigger("Death");
             ScoreManager.instance.AddPoint();
+            deathSound.Play();
             Destroy(this.gameObject, 1.5f);
         }
+
+        hitSound.Play();
     }
 }

@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public float damageCoolDown;
     private float damageCooldownTimer;
 
+    public AudioClip deathMusic;
+
     public GameObject LoosingScreen;
 
     public AudioSource hitSound;
@@ -42,6 +44,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         {
             Time.timeScale = 0;
             LoosingScreen.SetActive(true);
+            AudioManagerScript.instance.musicSource.clip = deathMusic;
+            AudioManagerScript.instance.musicSource.time = 0;
+            AudioManagerScript.instance.musicSource.Play();
         }
 
         hitSound.Play();

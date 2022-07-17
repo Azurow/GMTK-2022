@@ -2,20 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
-    public Text scoreText;
-    public Text highscoreText;
+    public TMP_Text scoreText;
+    public TMP_Text highscoreText;
 
     int score = 0;
     int highscore = 0;
 
     private void Awake()
     {
-        instance = this;
+        if(instance != null && instance!= this)
+        {
+            Destroy(gameObject);
+        } else if(instance == null){
+            instance = this;
+        }
+        
     }
     
     // Start is called before the first frame update

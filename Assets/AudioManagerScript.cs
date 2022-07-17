@@ -7,6 +7,7 @@ public class AudioManagerScript : MonoBehaviour
 
     public static AudioManagerScript instance;
     public AudioSource audioSource;
+    public AudioSource musicSource;
 
     // Start is called before the first frame update
     void Start()

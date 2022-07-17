@@ -72,7 +72,7 @@ public class ThrowingDice : MonoBehaviour
         foreach(Collider2D col in cols)
         {
             IDamagable hit = col.GetComponent<IDamagable>();
-            if(hit != null)
+            if(hit != null && col.tag != "Player")
             {
                 hit.Damage(rollResult / 2);
                 Debug.Log("Damaged " + col.name);

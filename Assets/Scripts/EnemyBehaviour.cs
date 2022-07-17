@@ -52,6 +52,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
         {
             speed = 0;
             animator.SetTrigger("Death");
+            ScoreManager.instance.AddPoint();
             Destroy(this.gameObject, 1.5f);
         }
     }

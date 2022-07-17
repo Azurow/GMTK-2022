@@ -33,12 +33,14 @@ public class Weapon : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             isShooting = true;
+            GetComponent<PlayerMovement>().moveSpeed = GetComponent<PlayerMovement>().maxSpeed / 4;
         }
         
         if(Input.GetButton("Fire2"))
         {
             isShooting = false;
             GetComponent<LineRenderer>().enabled = false;
+            GetComponent<PlayerMovement>().moveSpeed = GetComponent<PlayerMovement>().maxSpeed;
         }
 
         if (Input.GetButton("Fire1") && isShooting)
@@ -54,6 +56,8 @@ public class Weapon : MonoBehaviour
         {
             animator.SetBool("isAttack", true);
             GetComponent<LineRenderer>().enabled = false;
+            isShooting = false;
+            GetComponent<PlayerMovement>().moveSpeed = GetComponent<PlayerMovement>().maxSpeed;
         }
     }
 
@@ -67,13 +71,14 @@ public class Weapon : MonoBehaviour
     public void StopAttack()
     {
         if(animator.GetBool("isAttack")) animator.SetBool("isAttack", false);
-
+        GetComponent<PlayerMovement>().moveSpeed = GetComponent<PlayerMovement>().maxSpeed;
     }
 
     public void PlaythrowSound()
     {
         throwSoundSource.clip = throwSounds[Random.Range(0, throwSounds.Length)];
         throwSoundSource.Play();
+        GetComponent<PlayerMovement>().moveSpeed = 0;
     }
 
     public void PlayprepareSound()

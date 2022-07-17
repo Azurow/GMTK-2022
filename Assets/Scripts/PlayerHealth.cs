@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
-    public float _health;
+    public float maxHealth;
     public float Health {get; set;}
 
     public float damageCoolDown;
@@ -12,7 +12,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     void Start()
     {
-        Health = _health;
+        maxHealth = 6;
+        Health = maxHealth;
     }
 
 
@@ -31,7 +32,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         
         if (Health <= 0)
         {
-            Debug.Log("Loose");
+            Debug.Log("Lose");
         }
     }
 }

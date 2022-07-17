@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public float damageCoolDown;
     private float damageCooldownTimer;
 
+    public AudioSource hitSound;
+
     void Start()
     {
         maxHealth = 6;
@@ -36,5 +38,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        hitSound.Play();
     }
 }

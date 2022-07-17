@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [HideInInspector]public float moveSpeed = 5f;
+    public float maxSpeed = 5f;
     private Vector2 movement;
     public Animator animator;
     

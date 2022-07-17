@@ -10,7 +10,7 @@ public class HealthHeartManager : MonoBehaviour
 
     public static HealthHeartManager instance;
 
-    public void Start()
+    public void Awake()
     {
         if(instance != null && instance != this)
         {

@@ -11,12 +11,16 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public float damageCoolDown;
     private float damageCooldownTimer;
 
+    public GameObject LoosingScreen;
+
     public AudioSource hitSound;
 
     void Start()
     {
         maxHealth = 6;
         Health = maxHealth;
+        Time.timeScale = 1;
+        HealthHeartManager.instance.DrawHearts(); // Refreshes the hearts
     }
 
 
@@ -36,7 +40,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         
         if (Health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 0;
+            LoosingScreen.SetActive(true);
         }
 
         hitSound.Play();

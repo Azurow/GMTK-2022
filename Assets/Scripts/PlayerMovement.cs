@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     public Animator animator;
     
+    public AudioSource footsteps;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -39,6 +41,13 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("last_Vertical", Input.GetAxisRaw("Vertical"));
         }
         
+        if(movement != Vector2.zero)
+        {
+            footsteps.UnPause();
+        } else
+        {
+            footsteps.Pause();
+        }
 
     }
 

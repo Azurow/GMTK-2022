@@ -7,10 +7,24 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;
     public Transform[] spawnPoints;
 
+    public AnimationCurve spawnRate;
+    public float spawnTime;
+    private float spawnCountdown;
 
     void Start()
     {
-        InvokeRepeating("spawnEnemy", 7.5f, 10f);
+        spawnCountdown = spawnTime;
+    }
+
+    void Update()
+    {
+        spawnTime = spawnRate.Evaluate(Time.timeSinceLevelLoad);
+        spawnCountdown -= Time.deltaTime;
+        if(spawnCountdown <= 0)
+        {
+            spawnEnemy();
+            spawnCountdown = spawnTime;
+        }
     }
 
     void spawnEnemy()

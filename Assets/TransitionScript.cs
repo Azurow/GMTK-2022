@@ -15,6 +15,7 @@ public class TransitionScript : MonoBehaviour
 
     public void LoadLevel(int scene)
     {
+        Time.timeScale = 1f;
         StartCoroutine(DelayLoadLevel(scene));
     }
 

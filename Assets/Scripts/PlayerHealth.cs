@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         
         if (Health <= 0)
         {
-            
+            Time.timeScale = 0f;
             LoosingScreen.SetActive(true);
             AudioManagerScript.instance.musicSource.clip = deathMusic;
             AudioManagerScript.instance.musicSource.time = 0;

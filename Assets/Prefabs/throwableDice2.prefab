@@ -154,12 +154,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd649cb8895373641ab4b5a9ff7913ee, type: 3}
   resultDisplay: {fileID: 7125810688658640377, guid: d4d4ca61ce8fecd49b55e5ba827913f6, type: 3}
   resultSprites:
-  - {fileID: -453440705, guid: 3a954d21b062a8249a6dd798720a6bcc, type: 3}
-  - {fileID: -982889330, guid: 3a954d21b062a8249a6dd798720a6bcc, type: 3}
-  - {fileID: 859940008, guid: 3a954d21b062a8249a6dd798720a6bcc, type: 3}
-  - {fileID: 219052736, guid: 3a954d21b062a8249a6dd798720a6bcc, type: 3}
-  - {fileID: -727845391, guid: 3a954d21b062a8249a6dd798720a6bcc, type: 3}
-  - {fileID: -216988448, guid: 3a954d21b062a8249a6dd798720a6bcc, type: 3}
+  - {fileID: -1175162720, guid: 60d94ed0073731941967d2169f93b56c, type: 3}
+  - {fileID: 670217629, guid: 60d94ed0073731941967d2169f93b56c, type: 3}
+  - {fileID: -424741799, guid: 60d94ed0073731941967d2169f93b56c, type: 3}
+  - {fileID: -404718561, guid: 60d94ed0073731941967d2169f93b56c, type: 3}
+  - {fileID: 967449812, guid: 60d94ed0073731941967d2169f93b56c, type: 3}
+  - {fileID: 328237612, guid: 60d94ed0073731941967d2169f93b56c, type: 3}
   rollResult: 0
 --- !u!95 &1666331351712646704
 Animator:

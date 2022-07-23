@@ -61,7 +61,7 @@ public class ThrowingDice : MonoBehaviour
         AudioManagerScript.instance.GetComponent<AudioSource>().Play();
 
         GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        explosion.GetComponent<ParticleSystem>().emission.SetBurst(0, new ParticleSystem.Burst(0f, (short)rollResult * 2));
+        explosion.GetComponent<ParticleSystem>().emission.SetBurst(0, new ParticleSystem.Burst(0f, (short)rollResult / 2));
         explosion.GetComponent<ParticleSystem>().startSize = rollResult / 2;
 
         GameObject resultDisplayObject = Instantiate(resultDisplay, transform.position, Quaternion.identity);

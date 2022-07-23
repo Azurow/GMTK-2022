@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6444243837851730720}
   - component: {fileID: 37556171782704412}
   - component: {fileID: 798781960803777463}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 2167714661238824786}
   - component: {fileID: 2329990574058420686}
   - component: {fileID: 8687959750422970}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: D6 Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 2167714661238824796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.74, y: 1.89, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3298039812386584819}
@@ -280,6 +280,7 @@ MonoBehaviour:
   knockBack: {x: 0, y: 0}
   damage: 1
   firePoint: {fileID: 3298039812386584819}
+  healthText: {fileID: 798781960803777463}
   speed: 0.5
   hitRegion: {x: 1.5, y: 1.5}
   hitSound: {fileID: 2329990574058420686}
@@ -555,7 +556,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3298039812386584819}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

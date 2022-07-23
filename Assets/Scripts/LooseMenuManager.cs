@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LooseMenuManager : MonoBehaviour
 {
+
     public void StartAgain()
     {
         Time.timeScale = 1f;

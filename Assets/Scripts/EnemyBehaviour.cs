@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyBehaviour : MonoBehaviour, IDamagable
 {
@@ -9,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
     public float damage;
     
     public Transform firePoint;
+    public TMP_Text healthText;
 
     public float Health { get; set; }
     public float speed;
@@ -41,6 +43,8 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
 
     void Update()
     {
+        healthText.text = Health.ToString();
+
         animator.SetBool("isShooting", shootingMode);
         if(shootingMode)
         {
@@ -57,9 +61,11 @@ public class EnemyBehaviour : MonoBehaviour, IDamagable
         if(player.transform.position.x > transform.position.x)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            healthText.transform.localScale = new Vector3(-1, 1, 1);
         } else
         {
             transform.localScale = new Vector3(1, 1, 1);
+            healthText.transform.localScale = new Vector3(1, 1, 1);
         }
 
         if(player.transform.position.y > transform.position.y)

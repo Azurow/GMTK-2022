@@ -28,19 +28,13 @@ This game was made in Unity. it's playable under https://azurow-games.itch.io/di
 # CREDITS
 
 
-[Lotty / Anni Paz](https://annipaz.myportfolio.com/)
-
-_Programming and Engineering_
+[Lotty / Anni Paz](https://annipaz.myportfolio.com/) _Programming and Engineering_
 
 [Azurow / Emil Bertl](https://azurow-games.itch.io)
 
-Ouzen / Garrett Carlson
+Ouzen / Garrett Carlson _Music and Sound Design_
 
-_Music and Sound Design_
-
-[Somnelia / Emily Winter](https://soundcloud.com/somnelia)
-
-_Planning and Production_
+[Somnelia / Emily Winter](https://soundcloud.com/somnelia) _Planning and Production_
 
 *KINGOFSHIBUYA Ltd.*
 

@@ -1,8 +1,8 @@
-# Dice Versa
+# Dice Versa: Randomized Shooting Panic!!
 
 This game was made in Unity. it's playable under https://azurow-games.itch.io/dice-versa
 
-# Story  
+## Story  
 
   This game stars Lanni, a young girl who has been taken to another world overrun with evil animated Dice-like creatures who punish gamblers that haven't paid their debts. She didn't gamble with money, but instead traded her soul in order to cheat at boardgames and always get the roll she needs. Now when she sleeps, she is haunted by the nightmare of fighting endless waves of bloodthirsty dice. It's Lanni versus dice. It's Dice Versa!
 
